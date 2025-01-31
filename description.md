@@ -116,7 +116,7 @@ Below is the example of order calldata
 
 # maker address
 00000000 00000000 00000000 70997970 c51812dc 3a010c7d 01b50e0d 17dc79c8 
-# reciever address
+# receiver address
 00000000 00000000 00000000 3c44cddd b6a900fa 2b585dd2 99e03d12 fa4293bc
 # maker token address (DAI)
 00000000 00000000 00000000 6B175474 E89094C4 4Da98b95 4EedeAC4 95271d0F 
@@ -546,11 +546,11 @@ The example demonstrates the principles of how the predicate calldata is assembl
 
 ```javascript
 // Predicate = (5 < call result < 15) = or(5 < call result, 15 > call result)
-const arbitaryFunction = arbitraryPredicate.interface.encodeFunctionData('copyArg', [10]);
-// Create predicate:  (arbitary call result < 15 || arbitary call result > 5)
+const arbitraryFunction = arbitraryPredicate.interface.encodeFunctionData('copyArg', [10]);
+// Create predicate:  (arbitrary call result < 15 || arbitrary call result > 5)
 const arbitraryCallPredicate = swap.interface.encodeFunctionData('arbitraryStaticCall', [
     arbitraryPredicate.address,
-    arbitaryFunction,
+    arbitraryFunction,
 ]);
 const comparelt = swap.interface.encodeFunctionData('lt', [15, arbitraryCallPredicate]);
 const comparegt = swap.interface.encodeFunctionData('gt', [5, arbitraryCallPredicate]);
